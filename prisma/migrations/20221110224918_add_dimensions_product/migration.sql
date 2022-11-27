@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE `products` ADD COLUMN `dimensions` VARCHAR(191) NULL DEFAULT '0x0x0',
+    ADD COLUMN `weight` DOUBLE NULL DEFAULT 0;

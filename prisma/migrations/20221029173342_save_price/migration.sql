@@ -1,0 +1,6 @@
+-- AlterTable
+ALTER TABLE `products` ADD COLUMN `descont_price` DOUBLE NULL DEFAULT 0,
+    ADD COLUMN `favorites` INTEGER NOT NULL DEFAULT 0,
+    ADD COLUMN `save_price` DOUBLE NULL DEFAULT 0,
+    MODIFY `stars` DOUBLE NULL DEFAULT 5,
+    MODIFY `allstars` INTEGER NULL DEFAULT 0;
