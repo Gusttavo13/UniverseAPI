@@ -16,37 +16,19 @@ class CreateProductUseCase {
 
   async execute( {name, description, tags, colors, sizes, models, brand, price, showcase} : IRouteRequest) {
 
-    const tagExists = await client.tags.findFirst({
-      where: {
-        tag: tags
-      }
-    })
+    const productCreate = await client.products.create({data: {
+      name,
+      description,
+      tags: tags,
+      colors,
+      sizes,
+      models,
+      brand,
+      price,
+      showcase,
+    }})
 
-    if(!tagExists){
-      const tagCreate = await client.tags.create({
-        data: {
-          code: 23923928,
-          tag: tags,
-        }
-      })
-
-      const productCreate = await client.products.create({data: {
-        name,
-        description,
-        tags: tagCreate.tag,
-        colors,
-        sizes,
-        models,
-        brand,
-        price,
-        showcase,
-      }})
-
-      return {productCreate}
-    }
-
-    return {status: 'Criado Tag'}
-  
+    return {productCreate}
   }
 
 }
