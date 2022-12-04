@@ -14,7 +14,7 @@ class GetProductsDataController {
 
   async getProductByCode(req: Request, res: Response) {
 
-    const { code } = req.body
+    const { code } = req.params
 
     const getProductsDataUseCase = new GetProductsDataUseCase
 

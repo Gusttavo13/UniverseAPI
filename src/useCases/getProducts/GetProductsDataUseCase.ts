@@ -28,9 +28,7 @@ class GetProductsDataUseCase {
       }
       return products
     }else{
-      const products = await client.products.findMany()
-  
-      return products
+      throw new Error("Produto não encontrado.")
     }
     
 

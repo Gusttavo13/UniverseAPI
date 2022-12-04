@@ -7,7 +7,7 @@ generator client {
 
 datasource db {
   provider = "mysql"
-  url      = "mysql://LojaSystem:40028922ligaagora123@3.218.202.36:3306/universe?schema=public"
+  url      = env("DATABASE_URL")
 }
 
 model User {
@@ -41,22 +41,22 @@ model RefreshToken {
 model Products {
   id                        Int                     @id @default(autoincrement())
   code                      String                  @unique @default(cuid())
-  name                      String
-  description               String?
-  sourceList                String?
-  source                    String?
-  tags                      String
-  colors                    String?
-  sizes                     String?
-  models                    String?
+  name                      String                  @db.VarChar(1000)
+  description               String?                 @db.Text()
+  sourceList                String?                 @db.Text()
+  source                    String?                 @db.Text()
+  tags                      String                  @db.VarChar(1000)
+  colors                    String?                 @db.Text()
+  sizes                     String?                 @db.Text()
+  models                    String?                 @db.Text()
   save_price                Float?                  @default(0)
   descont_price             Float?                  @default(0)
   favorites                 Int                     @default(0)
-  brand                     String
+  brand                     String                  @db.VarChar(1000)
   stars                     Float?                  @default(5)
   allstars                  Int?                    @default(0)
   price                     Float
-  showcase                  String
+  showcase                  String                  @db.Text()
   weight                    Float?                  @default(0)
   dimensions                String?                 @default("0x0x0")
   images                    Images[]
@@ -89,7 +89,7 @@ model Images {
 
 model Tags {
   id Int              @id @default(autoincrement())
-  code Int            
+  code String            @default(cuid())       
   tag String
   description String?
   @@map("tags") 
