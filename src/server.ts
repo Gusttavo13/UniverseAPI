@@ -8,9 +8,11 @@ const app = express()
 //  origin: 'https://lojadoatirador.com'
 //}))
 
-app.use(cors())
+
 
 app.use(express.json())
+
+app.use(cors({ origin: true }))
 
 app.use(router)
 
