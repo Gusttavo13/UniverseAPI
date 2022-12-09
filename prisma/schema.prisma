@@ -45,7 +45,7 @@ model Products {
   description               String?                 @db.Text()
   sourceList                String?                 @db.Text()
   source                    String?                 @db.Text()
-  tags                      String                  @db.VarChar(1000)
+  tags                      Tags[]                  
   colors                    String?                 @db.Text()
   sizes                     String?                 @db.Text()
   models                    String?                 @db.Text()
@@ -89,9 +89,10 @@ model Images {
 
 model Tags {
   id Int              @id @default(autoincrement())
-  code String            @default(cuid())       
+  code String             @default(cuid())       
   tag String
   description String?
+  products Products[]
   @@map("tags") 
 }
 

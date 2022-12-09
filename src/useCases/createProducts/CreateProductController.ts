@@ -8,7 +8,6 @@ class CreateProductController {
 
     const { name, description, tags, colors, sizes, models, brand, price, showcase} = req.body
 
-    console.log(req.body)
     if(!(name && description && tags && (colors || sizes || models) && brand && price && showcase)){
       throw new Error("Certifique-se que preencheu todos os campos.")
     }
